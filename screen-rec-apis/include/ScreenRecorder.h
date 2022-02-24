@@ -51,6 +51,7 @@ private:
     thread*             videoThread{};
     exception_ptr       encodeVErr{};
     exception_ptr       encodeAErr{};
+    int                 dropframes = 0;
 
 
     void open();

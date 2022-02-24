@@ -57,8 +57,12 @@ int ScreenRecorder::pause() {
         return -1;
     }
     this->running = false;
+    this->dropframes = 200;
     cout << BOLDMAGENTA << "PAUSED" << RESET << endl;
     status = PAUSED;
+    cout << av_audio_fifo_size(audioFifo) << endl;
+    av_audio_fifo_reset(audioFifo);
+    cout << av_audio_fifo_size(audioFifo) << endl;
     return 0;
 }
 

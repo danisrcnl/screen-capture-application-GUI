@@ -71,6 +71,11 @@ void ScreenRecorder::decodeEncodeAudio() {
 
         if (validRead) {
 
+            if (dropframes > 0) {
+                dropframes--;
+                continue;
+            }
+
             if ((avcodec_send_packet(audioInCodecContext, inputPacket)) < 0)
                 throw std::runtime_error("Can not send pkt in decoding.");
 
