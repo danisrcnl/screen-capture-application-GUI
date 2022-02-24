@@ -35,8 +35,9 @@ void MainWindow::checkErr() {
         ui->pushButton_3->setEnabled(false);
         ui->pushButton_4->setEnabled(false);
         ui->pushButton_2->setEnabled(true);
-        ui->label_4->setText("An error occured during encoding. Stopped recording.");
+        ui->label_4->setText("Encoding error (" + QString::fromStdString(recorder->getError()) + ")");
         ui->label_4->setVisible(true);
+        recorder->clearEncodeError();
         return;
     }
 }

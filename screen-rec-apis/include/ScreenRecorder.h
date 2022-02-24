@@ -80,6 +80,7 @@ public:
     int resume();
     string getError();
     bool checkEncodeError();
+    void clearEncodeError();
 };
 
 

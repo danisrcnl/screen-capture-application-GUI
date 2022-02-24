@@ -132,6 +132,11 @@ bool ScreenRecorder::checkEncodeError() {
     return (encodeAErr || encodeVErr);
 }
 
+void ScreenRecorder::clearEncodeError() {
+    encodeAErr = nullptr;
+    encodeVErr = nullptr;
+}
+
 void ScreenRecorder::open() {
     try {
         openVideo();
