@@ -7,9 +7,12 @@
 #include "getRecArea.h"
 #include <QScreen>
 #include <QObject>
+#include <QTimer>
+#include <QtGlobal>
 #include <iostream>
 #include <QFileDialog>
 #include "screen-rec-apis/include/ScreenRecorder.h"
+#include <QMouseEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,6 +48,7 @@ private slots:
 
 public slots:
     void getArea(QPoint origin, QPoint end);
+    void checkErr();
 
 private:
     Ui::MainWindow *ui;

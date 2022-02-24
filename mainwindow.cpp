@@ -13,6 +13,9 @@ MainWindow::MainWindow(QWidget *parent)
     this->micRec = false;
     this->filename = "../output.mp4";
     recorder = new ScreenRecorder();
+    QTimer *timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, this, QOverload<>::of(&MainWindow::checkErr));
+        timer->start(3000);
     ui->setupUi(this);
     ui->checkBox_2->setChecked(true);
     ui->label_4->setVisible(false);
@@ -21,6 +24,21 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::checkErr() {
+
+    if (recorder->checkEncodeError()) {
+
+        recorder->stop();
+        ui->pushButton_5->setEnabled(false);
+        ui->pushButton_3->setEnabled(false);
+        ui->pushButton_4->setEnabled(false);
+        ui->pushButton_2->setEnabled(true);
+        ui->label_4->setText("An error occured during encoding. Stopped recording.");
+        ui->label_4->setVisible(true);
+        return;
+    }
 }
 
 void MainWindow::on_pushButton_clicked() {

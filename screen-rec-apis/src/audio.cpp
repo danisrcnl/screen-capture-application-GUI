@@ -132,6 +132,7 @@ void ScreenRecorder::decodeEncodeAudio() {
                 cout << RED << "Written frame " << frameCount++ << " (size = " << outputPacket->size << ")" << RESET
                      << endl;
                 av_packet_unref(outputPacket);
+
             }
             //if (cSamples)
                 //av_freep(&cSamples[0]);
